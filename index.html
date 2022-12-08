@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-bt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minha Calculadora</title>
+
+    <style>
+        form fieldset {
+            margin: 10px auto 10px auto;
+            width: 40vw;
+            border: solid black 1px;
+            padding: 3%;
+        }
+
+        form legend {
+            padding: 6px;
+            margin: 10px;
+            border: solid black 1px;
+            font-size: 1.5em;
+            font-weight: bold;
+            background-color: lightgray;
+        }
+
+        form label {
+            display: block;
+            font-size: 1.2em;
+        }
+
+        form input {
+            width: 100%;
+            border: solid black 1px;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+
+        form input.botao {
+            display: block;
+            width: auto;
+            float: right;
+        }
+
+        select {
+            font-size: 1.3em;
+            margin-bottom: 1em;
+        }
+    </style>
+</head>
+
+<body>
+    <form name="calcform" method="post" action="">
+        <fieldset>
+            <legend>Calculadora Simples</legend>
+
+            <label for="valor1">Digite o valor <strong>1</strong>:</label>
+            <input type="text" name="valor1" id="valor1" />
+
+            <label for="valor2">Digite o valor <strong>2</strong>:</label>
+            <input type="text" name="valor2" id="valor2" />
+
+            <label for="oper">Selecione a operação:</label>
+            <select name="oper" id="oper">
+                <option value="somar">Somar</option>
+                <option value="subtrair">Subtrair</option>
+                <option value="multiplicar">Multiplifcar</option>
+                <option value="dividir">Dividir</option>
+            </select>
+
+            <label for="res">Resultado:</label>
+            <input type="text" name="res" id="res" />
+
+            <input type="button" value="Calcular" class="botao" onClick="calcular(document.calcform.oper.value)" />
+        </fieldset>
+    </form>
+
+    <script>
+        function calcular(oper) {
+            var valor1 = document.calcform.valor1.value;
+            var valor2 = document.calcform.valor2.value;
+
+            if (oper == "somar") {
+                var res = parseInt(valor1) + parseInt(valor2);
+            } else {
+                if (oper == "subtrair") {
+                    var res = valor1 - valor2;
+                } else {
+                    if (oper == "multiplicar") {
+                        var res = valor1 * valor2;
+                    } else {
+                        var res = valor1 / valor2;
+                    }
+                }
+            }
+
+            document.calcform.res.value = res;
+        }
+    </script>
+</body>
+
+</html>
